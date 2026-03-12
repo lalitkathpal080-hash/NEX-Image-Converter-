@@ -1102,7 +1102,7 @@ main { max-width: 720px; margin: 0 auto; padding: 36px 16px 0; }
     <h2>Got an Idea? <span>Suggest a Feature</span></h2>
     <p class="suggest-subtitle">We build for you — drop your idea below and we'll consider it for the next update. No account needed, just your thoughts. 💡</p>
 
-    <form id="suggestForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form id="suggestForm" action="https://formspree.io/f/mbdzonyd" method="POST">
       <div class="suggest-grid">
 
         <div class="form-field">
@@ -1726,6 +1726,13 @@ suggestForm.addEventListener('submit', async function(e) {
 });
 
 </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('Service Worker Registered!', reg))
+      .catch(err => console.log('Registration Failed', err));
+  }
+  </script>
   <script src="https://quge5.com/88/tag.min.js" data-zone="218999" async data-cfasync="false"></script>
 </body>
 </html>
