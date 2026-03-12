@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ══ META & SEO — US/UK Targeted ══ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free image converter online — no upload required. Convert JPG to PNG, PNG to WebP, AVIF, GIF and 10+ formats instantly in your browser. 100% private, GDPR-safe, no sign-up.">
+  <meta name="keywords" content="free image converter no upload, convert jpg to png free, png to webp converter, image converter without uploading, browser based image converter, private image converter, GDPR safe image converter, bulk image converter free, convert images online free no signup, webp converter online free, jpg to avif converter, image format converter uk, free online photo converter usa">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="NEX Hub Tools">
+  <meta name="geo.region" content="US,GB">
+  <meta name="language" content="English">
+  <link rel="canonical" href="https://nex-image-converter.vercel.app/">
+
+  <!-- OpenGraph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Free Image Converter – No Upload, No Sign-Up, 100% Private">
+  <meta property="og:description" content="Convert JPG, PNG, WebP, GIF, AVIF and more — entirely in your browser. Your files never leave your device. Free, private, GDPR-safe.">
+  <meta property="og:url"         content="https://nex-image-converter.vercel.app/">
+  <meta property="og:site_name"   content="NEX Hub Tools">
+  <meta property="og:image"       content="https://nex-image-converter.vercel.app/og-image.jpg">
+  <meta property="og:locale"      content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Free Image Converter – No Upload, 100% Private">
+  <meta name="twitter:description" content="Convert JPG, PNG, WebP, GIF, AVIF and more. Zero uploads. Zero servers. Works entirely in your browser. Free forever.">
+  <meta name="twitter:image"       content="https://nex-image-converter.vercel.app/og-image.jpg">
+
+  <title>Free Image Converter Online – No Upload, No Sign-Up | NEX Hub</title>
+
+  <!-- Structured Data — FAQ schema for US/UK search snippets -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"NEX Image Converter",
+  "description":"Free online image converter — no upload required. Convert JPG, PNG, WebP, GIF, AVIF and 10+ formats instantly in your browser. 100% private and GDPR-safe.",
+  "url":"https://nex-image-converter.vercel.app/","applicationCategory":"MultimediaApplication",
+  "operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "featureList":["No file upload required","Works entirely in browser","GDPR compliant","Batch conversion","10+ image formats","Animated GIF maker"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Does this image converter upload my files?",
+     "acceptedAnswer":{"@type":"Answer","text":"No. NEX Image Converter processes all files entirely in your browser using the HTML5 Canvas API. Your images never leave your device and are never sent to any server."}},
+    {"@type":"Question","name":"Is this image converter free?",
+     "acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No account, no subscription, no watermarks, no file size limits. Free forever."}},
+    {"@type":"Question","name":"Is NEX Image Converter GDPR compliant?",
+     "acceptedAnswer":{"@type":"Answer","text":"Yes. Since no files are uploaded to any server, there is no personal data processing. Your files stay on your device at all times."}},
+    {"@type":"Question","name":"What image formats does NEX support?",
+     "acceptedAnswer":{"@type":"Answer","text":"NEX supports PNG, JPG, WebP, GIF (animated), BMP, ICO, TIFF, AVIF, SVG and PDF — 10 formats in total."}}
+  ]}
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════
+   CSS VARIABLES & ADAPTIVE THEME
+══════════════════════════════════ */
+:root {
+  --bg:          #0a0a0a;
+  --bg2:         #111111;
+  --bg3:         #1a1a1a;
+  --bg4:         #222222;
+  --accent:      #2ecc71;
+  --accent-dark: #27ae60;
+  --white:       #f0f0f0;
+  --gray1:       #888;
+  --gray2:       #2e2e2e;
+  --red:         #e74c3c;
+  --r-sm:        8px;
+  --r:           12px;
+  --r-lg:        16px;
+  --font:        'Poppins', sans-serif;
+  --t:           0.22s ease;
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.35);
+  --shadow-md:   0 6px 20px rgba(0,0,0,0.45);
+  --shadow-green:0 6px 24px rgba(46,204,113,0.25);
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:   #f4f4f4;
+    --bg2:  #ffffff;
+    --bg3:  #ebebeb;
+    --bg4:  #dedede;
+    --white:#111111;
+    --gray1:#555555;
+    --gray2:#cccccc;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-md: 0 6px 20px rgba(0,0,0,0.12);
+  }
+}
+
+/* ══════════════════════════════════
+   RESET
+══════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ══════════════════════════════════
+   HEADER
+══════════════════════════════════ */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.hamburger {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 38px; height: 38px;
+  background: transparent; border: none; cursor: pointer; flex-shrink: 0; padding: 5px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--white); border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.header-logo { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; }
+.header-logo .nex  { font-size: clamp(17px,5vw,26px); font-weight: 900; color: var(--accent); letter-spacing: -0.5px; }
+.header-logo .rest { font-size: clamp(17px,5vw,26px); font-weight: 900; color: var(--white);  letter-spacing: -0.5px; }
+
+/* ══════════════════════════════════
+   SIDEBAR DRAWER
+══════════════════════════════════ */
+.drawer-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  /* backdrop-filter removed - breaks pointer-events on Android WebView */
+}
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+.drawer {
+  position: absolute; top: 0; left: 0;
+  width: min(300px,86vw); height: 100%;
+  background: var(--bg2);
+  border-right: 1px solid var(--gray2);
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.23,1,0.32,1);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+}
+.drawer-overlay.open .drawer { transform: translateX(0); }
+
+.drawer-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px 16px;
+  border-bottom: 1px solid var(--gray2);
+  flex-shrink: 0;
+}
+/* drawer-logo-img removed - using pure CSS logo */
+
+/* Logo in sidebar - NEX. style */
+.drawer-nex-logo  { line-height: 1; }
+.dnl-nex {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -1px;
+  font-family: var(--font);
+  line-height: 1;
+}
+.dnl-dot { color: var(--accent); }
+.dnl-sub {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--gray1);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.drawer-close {
+  width: 32px; height: 32px;
+  background: var(--bg3); border: none; border-radius: 50%;
+  color: var(--white); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--t), transform var(--t);
+}
+.drawer-close:hover { background: var(--gray2); transform: rotate(90deg); }
+
+.drawer-body { padding: 12px 16px 24px; flex: 1; }
+
+.drawer-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray1);
+  margin: 20px 0 6px 4px;
+}
+.drawer-section-label:first-child { margin-top: 8px; }
+
+.drawer-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: var(--r-sm);
+  color: var(--white); font-size: 13px; font-weight: 500;
+  transition: background var(--t), color var(--t), transform var(--t);
+  cursor: pointer;
+}
+.drawer-link:hover  { background: rgba(46,204,113,0.1); color: var(--accent); transform: translateX(3px); }
+.drawer-link.active { background: rgba(46,204,113,0.15); color: var(--accent); font-weight: 700; }
+/* dl-icon removed */
+
+/* ══════════════════════════════════
+   MAIN LAYOUT
+══════════════════════════════════ */
+main { max-width: 720px; margin: 0 auto; padding: 36px 16px 0; }
+
+/* Page H1 */
+.page-h1 { font-size: clamp(20px,4.5vw,30px); font-weight: 800; margin-bottom: 8px; letter-spacing: -0.4px; line-height: 1.25; }
+.page-h1 span { color: var(--accent); }
+.page-sub { color: var(--gray1); font-size: 14px; margin-bottom: 28px; line-height: 1.6; }
+
+/* Format pills */
+.fmt-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
+.fmt-pill {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+  padding: 4px 11px; border-radius: 20px;
+  background: rgba(46,204,113,0.1); color: var(--accent);
+  border: 1px solid rgba(46,204,113,0.25);
+  transition: background var(--t), transform var(--t);
+}
+.fmt-pill:hover { background: rgba(46,204,113,0.2); transform: translateY(-1px); }
+
+/* ══════════════════════════════════
+   DROP ZONE
+══════════════════════════════════ */
+.drop-zone {
+  background: var(--bg2);
+  border: 2px dashed var(--gray2);
+  border-radius: var(--r-lg);
+  padding: 46px 24px;
+  text-align: center; cursor: pointer; position: relative;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s, box-shadow 0.25s;
+  margin-bottom: 22px;
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: var(--accent);
+  background: rgba(46,204,113,0.04);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-green);
+}
+.drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { font-size: 40px; margin-bottom: 12px; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.drop-zone:hover .drop-icon { transform: translateY(-6px) scale(1.08); }
+.drop-zone h2 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.drop-zone p  { color: var(--gray1); font-size: 13px; }
+.or-badge {
+  display: inline-block; margin-top: 12px;
+  background: var(--bg3); border: 1px solid var(--gray2);
+  color: var(--gray1); font-size: 11px; font-weight: 600;
+  padding: 4px 12px; border-radius: 20px;
+}
+
+/* ══════════════════════════════════
+   QUEUE
+══════════════════════════════════ */
+#queue-section { margin-bottom: 20px; display: none; }
+#queue-section.show { display: block; }
+
+.queue-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.queue-label  { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gray1); }
+.queue-count  { background: var(--accent); color: #000; font-size: 11px; font-weight: 800; padding: 2px 9px; border-radius: 20px; margin-left: 7px; }
+
+.clear-all-btn {
+  background: transparent; border: 1px solid var(--gray2);
+  color: var(--gray1); font-size: 11px; padding: 4px 11px;
+  border-radius: var(--r-sm); cursor: pointer; font-family: var(--font);
+  transition: border-color var(--t), color var(--t);
+}
+.clear-all-btn:hover { border-color: var(--red); color: var(--red); }
+
+#queue-list { display: flex; flex-direction: column; gap: 8px; max-height: 270px; overflow-y: auto; padding-right: 3px; }
+#queue-list::-webkit-scrollbar { width: 4px; }
+#queue-list::-webkit-scrollbar-thumb { background: var(--gray2); border-radius: 2px; }
+
+.queue-item {
+  display: flex; align-items: center; gap: 11px;
+  background: var(--bg3); border: 1px solid var(--gray2);
+  border-radius: var(--r-sm); padding: 10px 12px;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.queue-item:hover { box-shadow: var(--shadow-sm); }
+.queue-item.done  { border-color: rgba(46,204,113,0.4); }
+.queue-item.error { border-color: rgba(231,76,60,0.4); }
+
+.q-thumb { width: 42px; height: 42px; object-fit: cover; border-radius: 6px; flex-shrink: 0; background: var(--bg4); }
+.q-info  { flex: 1; min-width: 0; }
+.q-name  { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.q-meta  { font-size: 11px; color: var(--gray1); margin-top: 2px; }
+
+.q-status            { font-size: 11px; font-weight: 600; flex-shrink: 0; }
+.q-status.pending    { color: var(--gray1); }
+.q-status.processing { color: #f39c12; }
+.q-status.done       { color: var(--accent); }
+.q-status.error      { color: var(--red); }
+
+.q-remove {
+  background: transparent; border: none; color: var(--gray1);
+  font-size: 15px; cursor: pointer; padding: 3px 5px;
+  transition: color var(--t), transform var(--t); flex-shrink: 0; line-height: 1;
+}
+.q-remove:hover { color: var(--red); transform: scale(1.2); }
+
+/* ══════════════════════════════════
+   CONTROLS ROW
+══════════════════════════════════ */
+.controls-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; margin-bottom: 20px; }
+.field-label  { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gray1); margin-bottom: 7px; display: block; }
+
+/* ── Custom Dropdown ── */
+.select-wrap { position: relative; }
+
+.custom-select-btn {
+  width: 100%; background: var(--bg3); border: 1px solid var(--gray2);
+  border-radius: var(--r-sm); color: var(--white);
+  font-family: var(--font); font-size: 14px; font-weight: 600;
+  padding: 13px 44px 13px 14px;
+  cursor: pointer; text-align: left;
+  display: flex; align-items: center; gap: 10px;
+  transition: border-color var(--t), background var(--t), box-shadow var(--t);
+  user-select: none;
+}
+.custom-select-btn:hover { border-color: var(--accent); background: var(--bg4); box-shadow: 0 0 0 3px rgba(46,204,113,0.08); }
+.custom-select-btn.open  { border-color: var(--accent); border-bottom-left-radius: 0; border-bottom-right-radius: 0; box-shadow: 0 0 0 3px rgba(46,204,113,0.1); }
+
+.cs-fmt-badge { background: var(--accent); color: #000; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+.cs-label     { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cs-arrow     { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 10px; pointer-events: none; transition: transform 0.25s ease; }
+.custom-select-btn.open .cs-arrow { transform: translateY(-50%) rotate(180deg); }
+
+.custom-dropdown {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--bg3); border: 1px solid var(--accent); border-top: none;
+  border-bottom-left-radius: var(--r-sm); border-bottom-right-radius: var(--r-sm);
+  z-index: 500; max-height: 300px; overflow-y: auto; display: none;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.55);
+}
+.custom-dropdown.open { display: block; animation: dropDown 0.18s ease; }
+.custom-dropdown::-webkit-scrollbar { width: 4px; }
+.custom-dropdown::-webkit-scrollbar-thumb { background: var(--gray2); border-radius: 2px; }
+
+.cs-option {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; cursor: pointer;
+  border-bottom: 1px solid var(--gray2);
+  transition: background 0.14s;
+}
+.cs-option:last-child { border-bottom: none; }
+.cs-option:hover    { background: rgba(46,204,113,0.08); }
+.cs-option.selected { background: rgba(46,204,113,0.13); }
+
+.opt-badge {
+  background: rgba(46,204,113,0.15); color: var(--accent);
+  border: 1px solid rgba(46,204,113,0.3);
+  font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  min-width: 46px; text-align: center; flex-shrink: 0;
+}
+.cs-option.selected .opt-badge { background: var(--accent); color: #000; border-color: var(--accent); }
+.opt-text  { font-size: 13px; font-weight: 500; color: var(--gray1); flex: 1; }
+.cs-option.selected .opt-text  { color: var(--white); font-weight: 600; }
+.opt-check { color: var(--accent); font-size: 13px; font-weight: 700; opacity: 0; transition: opacity 0.15s; }
+.cs-option.selected .opt-check { opacity: 1; }
+
+/* ── Convert Button ── */
+.convert-btn {
+  background: var(--accent); color: #000; border: none;
+  border-radius: var(--r-sm); padding: 13px 26px;
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--t), transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow var(--t);
+  box-shadow: 0 4px 16px rgba(46,204,113,0.22);
+}
+.convert-btn:hover:not(:disabled) { background: var(--accent-dark); transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-green); }
+.convert-btn:active:not(:disabled){ transform: translateY(0) scale(0.98); }
+.convert-btn:disabled { opacity: 0.28; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ══════════════════════════════════
+   PROGRESS
+══════════════════════════════════ */
+.progress-wrap { display: none; margin-bottom: 20px; }
+.progress-wrap.show { display: block; animation: fadeUp 0.28s ease; }
+.prog-top { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray1); margin-bottom: 8px; }
+.prog-top span:last-child { color: var(--accent); }
+.prog-bg   { height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--accent-dark), var(--accent)); border-radius: 3px; width: 0%; transition: width 0.38s ease; }
+
+/* ══════════════════════════════════
+   STATUS
+══════════════════════════════════ */
+#status { display: none; margin-bottom: 16px; padding: 12px 16px; border-radius: var(--r-sm); font-size: 13px; font-weight: 500; animation: fadeUp 0.25s ease; }
+#status.success { display: block; background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.35); color: var(--accent); }
+#status.error   { display: block; background: rgba(231,76,60,0.1);  border: 1px solid rgba(231,76,60,0.35);  color: var(--red); }
+
+/* ══════════════════════════════════
+   RESULTS GRID
+══════════════════════════════════ */
+#results-section { display: none; }
+#results-section.show { display: block; animation: fadeUp 0.32s ease; }
+.results-header { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gray1); margin-bottom: 12px; }
+
+#results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px,1fr)); gap: 12px; }
+
+.result-card {
+  background: var(--bg2); border: 1px solid var(--gray2);
+  border-radius: var(--r); overflow: hidden;
+  transition: border-color var(--t), transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow var(--t);
+  animation: fadeUp 0.3s ease;
+}
+.result-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-green); }
+
+.result-thumb-wrap { width: 100%; aspect-ratio: 1; background: var(--bg3); overflow: hidden; position: relative; }
+.result-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+.result-card:hover .result-thumb { transform: scale(1.04); }
+
+.result-fmt-badge {
+  position: absolute; top: 8px; left: 8px;
+  background: var(--accent); color: #000;
+  font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+  padding: 3px 7px; border-radius: 4px;
+}
+.result-info { padding: 10px 12px 12px; }
+.result-name { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 9px; }
+
+.result-dl {
+  display: block; width: 100%;
+  background: var(--accent); color: #000; border: none;
+  border-radius: var(--r-sm); padding: 8px;
+  font-family: var(--font); font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  text-align: center; cursor: pointer;
+  transition: background var(--t), transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+}
+.result-dl:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+/* Download All */
+#dl-all-wrap { display: none; margin-top: 16px; }
+#dl-all-wrap.show { display: block; animation: fadeUp 0.25s ease; }
+#dl-all-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%;
+  background: transparent; border: 2px solid var(--accent); border-radius: var(--r-sm);
+  color: var(--accent); padding: 13px;
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+  transition: background var(--t), color var(--t), box-shadow var(--t), transform 0.18s ease;
+}
+#dl-all-btn:hover { background: var(--accent); color: #000; box-shadow: var(--shadow-green); transform: translateY(-2px); }
+
+/* ══════════════════════════════════
+   SEO QUICK-LINKS (internal route links)
+══════════════════════════════════ */
+.quick-links-section {
+  max-width: 720px; margin: 52px auto 0; padding: 0 16px;
+}
+.quick-links-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray1); margin-bottom: 12px; }
+.quick-links-grid  { display: flex; flex-wrap: wrap; gap: 8px; }
+.quick-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 20px;
+  background: var(--bg2); border: 1px solid var(--gray2);
+  color: var(--gray1);
+  transition: border-color var(--t), color var(--t), transform var(--t), box-shadow var(--t);
+  cursor: pointer;
+}
+.quick-link:hover  { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(46,204,113,0.12); }
+.quick-link .ql-arrow { font-size: 10px; }
+
+/* ══════════════════════════════════
+   SEO CONTENT SECTION
+══════════════════════════════════ */
+.seo-section { max-width: 720px; margin: 56px auto 0; padding: 0 16px 80px; }
+.seo-block   { margin-bottom: 52px; }
+
+.seo-block h2 {
+  font-size: 19px; font-weight: 800; letter-spacing: -0.3px;
+  margin-bottom: 14px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray2);
+  color: var(--white);
+}
+.seo-block h2 span { color: var(--accent); }
+.seo-block p { font-size: 14px; color: var(--gray1); line-height: 1.85; margin-bottom: 12px; }
+.seo-block p strong { color: var(--white); }
+
+/* Formats grid */
+.seo-formats-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(132px,1fr)); gap: 10px; margin-top: 18px; }
+.seo-fmt-card {
+  background: var(--bg2); border: 1px solid var(--gray2);
+  border-radius: var(--r-sm); padding: 14px 13px;
+  transition: border-color var(--t), transform var(--t), box-shadow var(--t);
+}
+.seo-fmt-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-green); }
+.seo-fmt-name { font-size: 13px; font-weight: 800; color: var(--accent); margin-bottom: 5px; }
+.seo-fmt-desc { font-size: 11px; color: var(--gray1); line-height: 1.55; }
+
+/* Steps */
+.seo-steps { list-style: none; counter-reset: steps; margin-top: 18px; display: flex; flex-direction: column; gap: 16px; }
+.seo-steps li { counter-increment: steps; display: flex; gap: 14px; align-items: flex-start; }
+.seo-steps li::before {
+  content: counter(steps);
+  background: var(--accent); color: #000;
+  font-size: 12px; font-weight: 800;
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.seo-steps li p { font-size: 14px; color: var(--gray1); line-height: 1.75; }
+
+/* Benefits */
+.seo-benefits { display: grid; grid-template-columns: repeat(auto-fill,minmax(195px,1fr)); gap: 12px; margin-top: 18px; }
+.seo-benefit {
+  background: var(--bg2); border: 1px solid var(--gray2);
+  border-radius: var(--r-sm); padding: 18px 16px;
+  transition: border-color var(--t), transform var(--t), box-shadow var(--t);
+}
+.seo-benefit:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-green); }
+.seo-benefit-icon  { font-size: 22px; margin-bottom: 9px; }
+.seo-benefit-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+.seo-benefit-text  { font-size: 12px; color: var(--gray1); line-height: 1.65; }
+
+/* ══════════════════════════════════
+   SUGGESTION FORM
+══════════════════════════════════ */
+.suggest-section {
+  max-width: 720px; margin: 0 auto;
+  padding: 0 16px 64px;
+}
+.suggest-card {
+  background: var(--bg2);
+  border: 1px solid var(--gray2);
+  border-radius: var(--r-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+}
+.suggest-card h2 {
+  font-size: 20px; font-weight: 800;
+  margin-bottom: 6px; letter-spacing: -0.3px;
+}
+.suggest-card h2 span { color: var(--accent); }
+.suggest-subtitle {
+  font-size: 13px; color: var(--gray1);
+  margin-bottom: 24px; line-height: 1.6;
+}
+.suggest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.suggest-grid .full { grid-column: 1 / -1; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field label {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--gray1);
+}
+.form-field input,
+.form-field textarea,
+.form-field select {
+  background: var(--bg3);
+  border: 1px solid var(--gray2);
+  border-radius: var(--r-sm);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 14px;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+  resize: none;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: var(--gray1); }
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(46,204,113,0.1);
+}
+.form-field select option { background: var(--bg3); }
+.form-field textarea { min-height: 100px; }
+
+.suggest-submit {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; background: var(--accent); color: #000; border: none;
+  border-radius: var(--r-sm); padding: 13px;
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+  margin-top: 6px;
+  transition: background var(--t), transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow var(--t);
+  box-shadow: 0 4px 16px rgba(46,204,113,0.2);
+}
+.suggest-submit:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-green); }
+.suggest-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.form-msg {
+  display: none; margin-top: 14px;
+  padding: 12px 16px; border-radius: var(--r-sm);
+  font-size: 13px; font-weight: 500;
+}
+.form-msg.success { display: block; background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.35); color: var(--accent); }
+.form-msg.error   { display: block; background: rgba(231,76,60,0.1);  border: 1px solid rgba(231,76,60,0.35);  color: var(--red); }
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.site-footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--gray2);
+  padding: 48px 20px 32px;
+}
+.footer-inner {
+  max-width: 720px; margin: 0 auto;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--gray2);
+}
+.footer-brand .fb-logo { font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+.footer-brand .fb-logo span { color: var(--accent); }
+.footer-brand p { font-size: 13px; color: var(--gray1); line-height: 1.7; margin-bottom: 10px; }
+.footer-contact {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--gray1);
+}
+.footer-contact a { color: var(--accent); text-decoration: none; transition: opacity var(--t); }
+.footer-contact a:hover { opacity: 0.8; }
+
+.footer-explore h4 {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--gray1); margin-bottom: 14px;
+}
+/* Explore tools list — add new tools here easily */
+.footer-tools { display: flex; flex-direction: column; gap: 8px; }
+.footer-tool-link {
+  display: inline-flex; align-items: center; justify-content: space-between;
+  background: var(--bg3); border: 1px solid var(--gray2);
+  border-radius: var(--r-sm); padding: 9px 14px;
+  font-size: 13px; font-weight: 600; color: var(--white);
+  text-decoration: none;
+  transition: border-color var(--t), color var(--t), transform var(--t);
+}
+.footer-tool-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(3px); }
+.footer-tool-link .ftl-arrow { color: var(--accent); font-size: 11px; }
+
+.footer-bottom {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 10px;
+  font-size: 12px; color: var(--gray1);
+}
+.footer-bottom strong { color: var(--accent); }
+.footer-owner { font-size: 12px; color: var(--gray1); }
+.footer-owner span { color: var(--white); font-weight: 600; }
+
+@media (max-width: 520px) {
+  .suggest-grid       { grid-template-columns: 1fr; }
+  .footer-top         { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom      { flex-direction: column; align-items: flex-start; }
+}
+
+
+/* ══════════════════════════════════
+   FAQ SECTION
+══════════════════════════════════ */
+.seo-faq { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.seo-faq-item {
+  background: var(--bg2);
+  border: 1px solid var(--gray2);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  transition: border-color var(--t);
+}
+.seo-faq-item:hover { border-color: rgba(46,204,113,0.4); }
+.seo-faq-q {
+  font-size: 14px; font-weight: 700;
+  color: var(--white); margin-bottom: 8px;
+}
+.seo-faq-q::before { content: 'Q: '; color: var(--accent); }
+.seo-faq-a {
+  font-size: 13px; color: var(--gray1); line-height: 1.7;
+}
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dropDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width: 520px) {
+  .controls-row  { grid-template-columns: 1fr; }
+  .convert-btn   { width: 100%; padding: 14px; }
+  #results-grid  { grid-template-columns: repeat(2,1fr); }
+  .seo-benefits  { grid-template-columns: 1fr 1fr; }
+  .seo-formats-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     HEADER
+════════════════════════════════════ -->
+<header>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="header-logo" aria-label="NEX Image Converter">
+    <span class="nex">NEX</span><span class="rest"> Image Converter</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════
+     SIDEBAR DRAWER
+════════════════════════════════════ -->
+<div class="drawer-overlay" id="drawerOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <nav class="drawer">
+
+    <!-- Sidebar header with logo -->
+    <div class="drawer-head">
+      <div class="drawer-logo-wrap">
+        <div class="drawer-nex-logo">
+          <div class="dnl-nex">NEX<span class="dnl-dot">.</span></div>
+          <div class="dnl-sub">IMAGE CONVERTER</div>
+        </div>
+      </div>
+      <button class="drawer-close" id="closeDrawer" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="drawer-body">
+
+      <!-- Image Tools -->
+      <div class="drawer-section-label">Image Tools</div>
+      <a class="drawer-link active" data-fmt="png" data-badge="PNG" data-label="Lossless / Transparent" href="#">Image Converter</a>
+      <a class="drawer-link" href="coming-soon.html">Image Compressor</a>
+      <a class="drawer-link" data-fmt="png"  data-badge="PNG"  data-label="Lossless / Transparent" href="#">JPG to PNG</a>
+      <a class="drawer-link" data-fmt="jpeg" data-badge="JPG"  data-label="Compressed Photo"       href="#">PNG to JPG</a>
+      <a class="drawer-link" data-fmt="webp" data-badge="WebP" data-label="Modern Web Format"      href="#">PNG to WebP</a>
+      <a class="drawer-link" data-fmt="jpeg" data-badge="JPG"  data-label="Compressed Photo"       href="#">WebP to JPG</a>
+      <a class="drawer-link" data-fmt="gif"  data-badge="GIF"  data-label="Animated GIF (multi-frame)" href="#">Images to GIF</a>
+
+      <!-- Video Tools -->
+      <div class="drawer-section-label">Video Tools</div>
+      <a class="drawer-link" href="coming-soon.html">YouTube Downloader</a>
+      <a class="drawer-link" href="coming-soon.html">Video to MP3</a>
+
+      <!-- AI Tools -->
+      <div class="drawer-section-label">AI Tools</div>
+      <a class="drawer-link" href="coming-soon.html">AI Suggester</a>
+      <a class="drawer-link" href="coming-soon.html">AI Background Remover</a>
+
+      <!-- Minecraft Tools -->
+      <div class="drawer-section-label">Minecraft Tools</div>
+      <a class="drawer-link" href="https://nexhub.tools/mods" target="_blank" rel="noopener">NEX Mods Hub</a>
+      <a class="drawer-link" href="coming-soon.html">Java Edition Mods</a>
+      <a class="drawer-link" href="coming-soon.html">Bedrock Edition Mods</a>
+
+      <!-- Pages -->
+      <div class="drawer-section-label">Pages</div>
+      <a class="drawer-link" href="about.html">About NEX Hub</a>
+      <a class="drawer-link" href="privacy-policy.html">Privacy Policy</a>
+
+    </div>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════
+     MAIN TOOL
+════════════════════════════════════ -->
+<main>
+
+  <!-- H1 — Primary SEO heading -->
+  <h1 class="page-h1">Free Image Converter <span>— No Upload Required</span></h1>
+  <p class="page-sub">Convert JPG, PNG, WebP, GIF, AVIF and 10+ formats instantly — entirely in your browser. Your files never leave your device. No sign-up. No cloud. GDPR-safe.</p>
+
+  <!-- Format pills -->
+  <div class="fmt-pills" aria-label="Supported formats">
+    <span class="fmt-pill">PNG</span>
+    <span class="fmt-pill">JPG</span>
+    <span class="fmt-pill">WebP</span>
+    <span class="fmt-pill">GIF</span>
+    <span class="fmt-pill">BMP</span>
+    <span class="fmt-pill">ICO</span>
+    <span class="fmt-pill">TIFF</span>
+    <span class="fmt-pill">AVIF</span>
+    <span class="fmt-pill">SVG</span>
+    <span class="fmt-pill">PDF</span>
+  </div>
+
+  <!-- Drop Zone -->
+  <div class="drop-zone" id="dropZone" role="button" aria-label="Upload images — drag and drop or click to browse">
+    <input type="file" id="fileInput" accept="image/*" multiple aria-label="Select image files">
+    <div class="drop-icon" aria-hidden="true">🖼️</div>
+    <h2>Drop Images Here</h2>
+    <p>PNG, JPG, WebP, GIF, BMP, TIFF, AVIF and more</p>
+    <span class="or-badge">tap to browse · multiple files supported</span>
+  </div>
+
+  <!-- File Queue -->
+  <section id="queue-section" aria-label="File queue">
+    <div class="queue-header">
+      <div style="display:flex;align-items:center;">
+        <span class="queue-label">Selected Files</span>
+        <span class="queue-count" id="queueCount">0</span>
+      </div>
+      <button class="clear-all-btn" id="clearAllBtn">Clear All</button>
+    </div>
+    <div id="queue-list" role="list"></div>
+  </section>
+
+  <!-- Controls -->
+  <div class="controls-row">
+    <div class="select-wrap" id="selectWrap">
+      <label class="field-label" id="formatLabel">Convert To</label>
+      <button class="custom-select-btn" id="selectBtn" type="button"
+              aria-haspopup="listbox" aria-labelledby="formatLabel" aria-expanded="false">
+        <span class="cs-fmt-badge" id="csBadge">PNG</span>
+        <span class="cs-label"    id="csLabel">Lossless / Transparent</span>
+        <span class="cs-arrow" aria-hidden="true">▼</span>
+      </button>
+      <div class="custom-dropdown" id="customDropdown" role="listbox" aria-labelledby="formatLabel">
+        <div class="cs-option selected" data-value="png"  data-badge="PNG"  data-label="Lossless / Transparent"    role="option" aria-selected="true">
+          <span class="opt-badge">PNG</span><span class="opt-text">Lossless / Transparent</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="jpeg" data-badge="JPG"  data-label="Compressed Photo"             role="option" aria-selected="false">
+          <span class="opt-badge">JPG</span><span class="opt-text">Compressed Photo</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="webp" data-badge="WebP" data-label="Modern Web Format"            role="option" aria-selected="false">
+          <span class="opt-badge">WebP</span><span class="opt-text">Modern Web Format</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="gif"  data-badge="GIF"  data-label="Animated GIF (multi-frame)"   role="option" aria-selected="false">
+          <span class="opt-badge">GIF</span><span class="opt-text">Animated GIF (multi-frame)</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="bmp"  data-badge="BMP"  data-label="Uncompressed Bitmap"          role="option" aria-selected="false">
+          <span class="opt-badge">BMP</span><span class="opt-text">Uncompressed Bitmap</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="ico"  data-badge="ICO"  data-label="Windows Icon 32×32"           role="option" aria-selected="false">
+          <span class="opt-badge">ICO</span><span class="opt-text">Windows Icon 32×32</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="tiff" data-badge="TIFF" data-label="High Quality Print"           role="option" aria-selected="false">
+          <span class="opt-badge">TIFF</span><span class="opt-text">High Quality Print</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="avif" data-badge="AVIF" data-label="Next-Gen Compressed"          role="option" aria-selected="false">
+          <span class="opt-badge">AVIF</span><span class="opt-text">Next-Gen Compressed</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="svg"  data-badge="SVG"  data-label="Vector Embed"                 role="option" aria-selected="false">
+          <span class="opt-badge">SVG</span><span class="opt-text">Vector Embed</span><span class="opt-check">✓</span>
+        </div>
+        <div class="cs-option" data-value="pdf"  data-badge="PDF"  data-label="Document Format"              role="option" aria-selected="false">
+          <span class="opt-badge">PDF</span><span class="opt-text">Document Format</span><span class="opt-check">✓</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label class="field-label" style="opacity:0" aria-hidden="true">x</label>
+      <button class="convert-btn" id="convertBtn" disabled aria-label="Convert all uploaded files">Convert All</button>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progressWrap" role="progressbar" aria-live="polite" aria-label="Conversion progress">
+    <div class="prog-top">
+      <span id="progressText">Processing…</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="prog-bg"><div class="prog-fill" id="progressFill"></div></div>
+  </div>
+
+  <!-- Status -->
+  <div id="status" role="alert" aria-live="assertive"></div>
+
+  <!-- Results -->
+  <section id="results-section" aria-label="Converted files">
+    <div class="results-header">Converted Files — Click to Download</div>
+    <div id="results-grid"></div>
+    <div id="dl-all-wrap">
+      <button id="dl-all-btn">⬇ Download All Files</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════════
+     QUICK LINKS (SEO internal routes)
+     These auto-select the format when clicked
+════════════════════════════════════ -->
+<div class="quick-links-section">
+  <div class="quick-links-title">Popular Converters</div>
+  <div class="quick-links-grid">
+    <span class="quick-link" data-fmt="jpeg" data-badge="JPG" data-label="Compressed Photo">
+      JPG to PNG <span class="ql-arrow">→</span>
+    </span>
+    <span class="quick-link" data-fmt="png"  data-badge="PNG" data-label="Lossless / Transparent">
+      PNG to JPG <span class="ql-arrow">→</span>
+    </span>
+    <span class="quick-link" data-fmt="webp" data-badge="WebP" data-label="Modern Web Format">
+      PNG to WebP <span class="ql-arrow">→</span>
+    </span>
+    <span class="quick-link" data-fmt="jpeg" data-badge="JPG" data-label="Compressed Photo">
+      WebP to JPG <span class="ql-arrow">→</span>
+    </span>
+    <span class="quick-link" data-fmt="gif"  data-badge="GIF" data-label="Animated GIF (multi-frame)">
+      Images to GIF <span class="ql-arrow">→</span>
+    </span>
+    <span class="quick-link" data-fmt="ico"  data-badge="ICO" data-label="Windows Icon 32×32">
+      PNG to ICO <span class="ql-arrow">→</span>
+    </span>
+    <span class="quick-link" data-fmt="avif" data-badge="AVIF" data-label="Next-Gen Compressed">
+      JPG to AVIF <span class="ql-arrow">→</span>
+    </span>
+    <span class="quick-link" data-fmt="pdf"  data-badge="PDF" data-label="Document Format">
+      Image to PDF <span class="ql-arrow">→</span>
+    </span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SEO CONTENT SECTION
+════════════════════════════════════ -->
+<section class="seo-section" aria-label="About NEX Image Converter">
+
+  <!-- What it does -->
+  <div class="seo-block">
+    <h2>Free Image Converter <span>— No Upload, No Server</span></h2>
+    <p>NEX Image Converter is a <strong>free, privacy-first image conversion tool</strong> that runs entirely inside your browser — no file uploads, no cloud processing, no account required. Whether you need to <strong>convert JPG to PNG</strong>, turn <strong>PNG to WebP</strong>, create animated GIFs, or convert images to PDF, it all happens locally on your device using the HTML5 Canvas API.</p>
+    <p>Unlike other online converters that upload your images to remote servers, <strong>NEX never touches your files</strong>. This makes it the safest free image converter for professionals, businesses, and anyone who values data privacy. Fully <strong>GDPR-compliant</strong> and safe to use in the UK, US, EU and worldwide.</p>
+    <p>Works on any device — Windows, Mac, iPhone, Android — with no software to install and no sign-up needed.</p>
+  </div>
+
+  <!-- Supported formats -->
+  <div class="seo-block">
+    <h2>Supported <span>Image Formats</span></h2>
+    <p>Convert images to and from all major formats used on the web, in print, and in app development:</p>
+    <div class="seo-formats-grid">
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">PNG</div>
+        <div class="seo-fmt-desc">Lossless quality with full transparency support. Best for logos, icons and UI graphics.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">JPG / JPEG</div>
+        <div class="seo-fmt-desc">Compressed photo format. Smallest file size for photos, social media and web images.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">WebP</div>
+        <div class="seo-fmt-desc">Modern Google web format. Up to 30% smaller than JPG with excellent quality.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">GIF</div>
+        <div class="seo-fmt-desc">Animated format. Upload multiple images to create looping animated GIFs.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">BMP</div>
+        <div class="seo-fmt-desc">Uncompressed Windows bitmap. Maximum fidelity, larger file sizes.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">ICO</div>
+        <div class="seo-fmt-desc">Windows icon format (32×32). Essential for website favicons and app icons.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">TIFF</div>
+        <div class="seo-fmt-desc">High quality archival format used in professional photography and printing.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">AVIF</div>
+        <div class="seo-fmt-desc">Next-generation AV1-based format. Better compression than WebP, great for web.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">SVG</div>
+        <div class="seo-fmt-desc">Scalable vector embed. Infinite resolution at tiny file sizes. Perfect for icons.</div>
+      </div>
+      <div class="seo-fmt-card">
+        <div class="seo-fmt-name">PDF</div>
+        <div class="seo-fmt-desc">Portable document format. Instantly embed any image into a shareable PDF.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to convert -->
+  <div class="seo-block">
+    <h2>How to <span>Convert Images Online</span> — 4 Simple Steps</h2>
+    <p>No software, no sign-up, no uploads. Just open the page and start converting:</p>
+    <ol class="seo-steps">
+      <li><p><strong>Drop or select your images</strong> — drag and drop images onto the upload area, or tap to browse files from your device. Convert unlimited images at once with batch processing.</p></li>
+      <li><p><strong>Choose your output format</strong> — select from PNG, JPG, WebP, GIF, BMP, ICO, TIFF, AVIF, SVG or PDF. Quick-links at the bottom let you jump straight to the most popular conversions.</p></li>
+      <li><p><strong>Hit Convert All</strong> — your images are converted instantly inside your browser. No waiting for uploads. No server processing. Results appear in seconds.</p></li>
+      <li><p><strong>Download your files</strong> — click Download on any file, or use Download All to grab everything at once. Your original files are never modified.</p></li>
+    </ol>
+  </div>
+
+  <!-- Why NEX -->
+  <div class="seo-block">
+    <h2>Why NEX is the <span>Best Free Image Converter</span></h2>
+    <p>Most online image converters upload your files to a remote server — creating privacy risks and slow processing times. NEX is different:</p>
+    <div class="seo-benefits">
+      <div class="seo-benefit">
+        <div class="seo-benefit-icon">🔒</div>
+        <div class="seo-benefit-title">Zero Upload — 100% Private</div>
+        <div class="seo-benefit-text">Your images are processed entirely on your device. Nothing is sent to any server. Safe for confidential, business and personal files.</div>
+      </div>
+      <div class="seo-benefit">
+        <div class="seo-benefit-icon">✅</div>
+        <div class="seo-benefit-title">GDPR &amp; UK GDPR Compliant</div>
+        <div class="seo-benefit-text">Since no data ever leaves your device, NEX is fully compliant with GDPR (EU), UK GDPR, and CCPA (California). Safe to use at work or school.</div>
+      </div>
+      <div class="seo-benefit">
+        <div class="seo-benefit-icon">⚡</div>
+        <div class="seo-benefit-title">Instant — No Waiting</div>
+        <div class="seo-benefit-text">No upload time. No queue. No server lag. Images convert in milliseconds using the browser's built-in Canvas API.</div>
+      </div>
+      <div class="seo-benefit">
+        <div class="seo-benefit-icon">💸</div>
+        <div class="seo-benefit-title">Completely Free — No Hidden Costs</div>
+        <div class="seo-benefit-text">No account required. No subscription. No watermarks. No file size limits. Free forever with no strings attached.</div>
+      </div>
+      <div class="seo-benefit">
+        <div class="seo-benefit-icon">🗂️</div>
+        <div class="seo-benefit-title">Bulk Batch Conversion</div>
+        <div class="seo-benefit-text">Convert dozens of images at once. No one-file-at-a-time restrictions like most free tools online.</div>
+      </div>
+      <div class="seo-benefit">
+        <div class="seo-benefit-icon">🎞️</div>
+        <div class="seo-benefit-title">Animated GIF Maker</div>
+        <div class="seo-benefit-text">Turn multiple images into a looping animated GIF directly in your browser. No Photoshop or app needed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- US/UK FAQ block for rich snippets -->
+  <div class="seo-block">
+    <h2>Frequently Asked <span>Questions</span></h2>
+    <div class="seo-faq">
+      <div class="seo-faq-item">
+        <div class="seo-faq-q">Does this tool upload my images to a server?</div>
+        <div class="seo-faq-a">No — never. All conversion happens locally in your browser using the HTML5 Canvas API. Your files never leave your device.</div>
+      </div>
+      <div class="seo-faq-item">
+        <div class="seo-faq-q">Is NEX Image Converter GDPR compliant?</div>
+        <div class="seo-faq-a">Yes. Since zero data is transmitted to any server, there is no personal data processing involved. It is fully GDPR, UK GDPR and CCPA safe.</div>
+      </div>
+      <div class="seo-faq-item">
+        <div class="seo-faq-q">Is it really free with no sign-up?</div>
+        <div class="seo-faq-a">100% free. No account, no email, no subscription. Open the page and start converting — no strings attached.</div>
+      </div>
+      <div class="seo-faq-item">
+        <div class="seo-faq-q">What image formats are supported?</div>
+        <div class="seo-faq-a">PNG, JPG, WebP, GIF (animated), BMP, ICO, TIFF, AVIF, SVG and PDF — 10 formats supported for input and output.</div>
+      </div>
+      <div class="seo-faq-item">
+        <div class="seo-faq-q">Can I convert multiple images at once?</div>
+        <div class="seo-faq-a">Yes. Drop as many images as you like and click Convert All — all files are processed in one go with a single download button for the whole batch.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════
+     SUGGEST A FEATURE FORM
+════════════════════════════════════ -->
+<div class="suggest-section">
+  <div class="suggest-card">
+    <h2>Got an Idea? <span>Suggest a Feature</span></h2>
+    <p class="suggest-subtitle">We build for you — drop your idea below and we'll consider it for the next update. No account needed, just your thoughts. 💡</p>
+
+    <form id="suggestForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="suggest-grid">
+
+        <div class="form-field">
+          <label for="sf-email">Your Email</label>
+          <input type="email" id="sf-email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-field">
+          <label for="sf-title">Feature Title</label>
+          <input type="text" id="sf-title" name="title" placeholder="e.g. Add WebP to GIF" required>
+        </div>
+
+        <div class="form-field full">
+          <label for="sf-category">Category</label>
+          <select id="sf-category" name="category">
+            <option value="image-tool">Image Tool</option>
+            <option value="video-tool">Video Tool</option>
+            <option value="ai-tool">AI Tool</option>
+            <option value="ui-ux">UI / UX Improvement</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-field full">
+          <label for="sf-desc">Describe Your Idea</label>
+          <textarea id="sf-desc" name="message" placeholder="Tell us what you'd like to see and why it would be useful…" required></textarea>
+        </div>
+
+      </div>
+
+      <button type="submit" class="suggest-submit" id="suggestBtn">
+        Submit Idea
+      </button>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- Top: Brand + Explore More Tools -->
+    <div class="footer-top">
+
+      <!-- Brand / Owner info -->
+      <div class="footer-brand">
+        <div class="fb-logo"><span>NEX</span> Hub Tools</div>
+        <p>Free, privacy-first browser tools. No uploads, no servers, no accounts. GDPR-safe and free forever.</p>
+        <div class="footer-contact">
+          <span>Support:</span>
+          <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#46;&#110;&#101;&#120;&#104;&#117;&#98;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#46;&#110;&#101;&#120;&#104;&#117;&#98;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
+        </div>
+      </div>
+
+      <!-- Explore More Tools by NEX Hub
+           ↓ When you launch a new site/tool, just add a new <a> block here ↓ -->
+      <div class="footer-explore">
+        <h4>Explore More Tools by NEX Hub</h4>
+        <div class="footer-tools">
+          <!-- CURRENT TOOL -->
+          <a class="footer-tool-link" href="index.html">
+            NEX Image Converter <span class="ftl-arrow">→</span>
+          </a>
+          <!-- ADD YOUR NEW TOOLS BELOW THIS LINE:
+          <a class="footer-tool-link" href="https://yournewsite.com" target="_blank" rel="noopener">
+            Your New Tool Name <span class="ftl-arrow">→</span>
+          </a>
+          -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom: Copyright + Owner credit -->
+    <div class="footer-bottom">
+      <div>
+        <strong>NEX Hub Tools</strong> · All processing is local · No upload · No server · GDPR-safe
+        &nbsp;·&nbsp; <a href="about.html" style="color:var(--gray1);text-decoration:none;">About</a>
+        &nbsp;·&nbsp; <a href="privacy-policy.html" style="color:var(--gray1);text-decoration:none;">Privacy Policy</a>
+      </div>
+      <div class="footer-owner">
+        Made with ♥ by <span>Lalit Kathpal</span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════ -->
+<script>
+
+/* ── DRAWER ── */
+var hamburger     = document.getElementById('hamburger');
+var drawerOverlay = document.getElementById('drawerOverlay');
+var closeDrawer   = document.getElementById('closeDrawer');
+
+function openDrawer() {
+  drawerOverlay.classList.add('open');
+  hamburger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawerFn() {
+  drawerOverlay.classList.remove('open');
+  hamburger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamburger.onclick     = openDrawer;
+closeDrawer.onclick   = closeDrawerFn;
+drawerOverlay.onclick = function(e) {
+  if (!e.target.closest('.drawer')) closeDrawerFn();
+};
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDrawerFn();
+});
+
+/* ── URL AUTO-SELECT FORMAT ── */
+var pathMap = {
+  'jpg-to-png':  { fmt:'png',  badge:'PNG',  label:'Lossless / Transparent' },
+  'png-to-jpg':  { fmt:'jpeg', badge:'JPG',  label:'Compressed Photo' },
+  'png-to-webp': { fmt:'webp', badge:'WebP', label:'Modern Web Format' },
+  'webp-to-jpg': { fmt:'jpeg', badge:'JPG',  label:'Compressed Photo' },
+  'gif-to-png':  { fmt:'png',  badge:'PNG',  label:'Lossless / Transparent' },
+  'jpg-to-webp': { fmt:'webp', badge:'WebP', label:'Modern Web Format' },
+  'png-to-ico':  { fmt:'ico',  badge:'ICO',  label:'Windows Icon 32x32' },
+  'jpg-to-avif': { fmt:'avif', badge:'AVIF', label:'Next-Gen Compressed' }
+};
+var pathSlug = window.location.pathname.replace(/\//g,'').toLowerCase();
+var toParam  = new URLSearchParams(window.location.search).get('to') || '';
+var initFmt  = pathMap[pathSlug] || (toParam ? { fmt:toParam, badge:toParam.toUpperCase(), label:toParam.toUpperCase() } : null);
+
+/* ── CUSTOM DROPDOWN ── */
+var selectedFormat = 'png';
+var selectBtn      = document.getElementById('selectBtn');
+var customDropdown = document.getElementById('customDropdown');
+var csBadge        = document.getElementById('csBadge');
+var csLabel        = document.getElementById('csLabel');
+
+if (initFmt) applyFormat(initFmt.fmt, initFmt.badge, initFmt.label);
+
+selectBtn.onclick = function(e) {
+  e.stopPropagation();
+  var isOpen = customDropdown.classList.contains('open');
+  toggleDropdown(!isOpen);
+  if (!isOpen) setTimeout(function() {
+    customDropdown.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }, 60);
+};
+
+customDropdown.onclick = function(e) {
+  var opt = e.target.closest('.cs-option');
+  if (!opt) return;
+  applyFormat(opt.dataset.value, opt.dataset.badge, opt.dataset.label);
+  toggleDropdown(false);
+};
+
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('selectWrap').contains(e.target)) toggleDropdown(false);
+});
+
+function toggleDropdown(open) {
+  customDropdown.classList.toggle('open', open);
+  selectBtn.classList.toggle('open', open);
+  selectBtn.setAttribute('aria-expanded', String(open));
+}
+
+function applyFormat(fmt, badge, label) {
+  selectedFormat = fmt;
+  csBadge.textContent = badge || fmt.toUpperCase();
+  csLabel.textContent = label || fmt.toUpperCase();
+  customDropdown.querySelectorAll('.cs-option').forEach(function(o) {
+    var sel = o.dataset.value === fmt;
+    o.classList.toggle('selected', sel);
+    o.setAttribute('aria-selected', String(sel));
+  });
+}
+
+/* ── QUICK LINKS ── */
+document.querySelectorAll('.quick-link').forEach(function(el) {
+  el.onclick = function() {
+    applyFormat(el.dataset.fmt, el.dataset.badge, el.dataset.label);
+    document.getElementById('dropZone').scrollIntoView({ behavior:'smooth', block:'center' });
+  };
+});
+
+/* ── SIDEBAR LINKS ── */
+document.querySelectorAll('.drawer-link').forEach(function(el) {
+  el.onclick = function(e) {
+    var fmt   = el.dataset.fmt;
+    var href  = el.getAttribute('href') || '';
+    var isExternal = href.startsWith('http');
+
+    if (fmt) {
+      e.preventDefault();
+      applyFormat(fmt, el.dataset.badge, el.dataset.label);
+      document.querySelectorAll('.drawer-link').forEach(function(l) { l.classList.remove('active'); });
+      el.classList.add('active');
+      closeDrawerFn();
+      setTimeout(function() {
+        document.getElementById('dropZone').scrollIntoView({ behavior:'smooth', block:'center' });
+      }, 350);
+    } else if (!isExternal && href !== '#' && href !== '') {
+      e.preventDefault();
+      closeDrawerFn();
+      setTimeout(function() { window.location.href = 'coming-soon.html'; }, 300);
+    }
+    // external links open normally
+  };
+});
+
+/* ── FILE STATE ── */
+var fileQueue = [];
+
+var dropZone       = document.getElementById('dropZone');
+var fileInput      = document.getElementById('fileInput');
+var queueSection   = document.getElementById('queue-section');
+var queueListEl    = document.getElementById('queue-list');
+var queueCountEl   = document.getElementById('queueCount');
+var clearAllBtn    = document.getElementById('clearAllBtn');
+var convertBtn     = document.getElementById('convertBtn');
+var progressWrap   = document.getElementById('progressWrap');
+var progressFill   = document.getElementById('progressFill');
+var progressPct    = document.getElementById('progressPct');
+var progressText   = document.getElementById('progressText');
+var statusEl       = document.getElementById('status');
+var resultsSection = document.getElementById('results-section');
+var resultsGrid    = document.getElementById('results-grid');
+var dlAllWrap      = document.getElementById('dl-all-wrap');
+var dlAllBtn       = document.getElementById('dl-all-btn');
+
+function fmtSize(s) {
+  return s < 1024 ? s+' B' : s < 1048576 ? (s/1024).toFixed(1)+' KB' : (s/1048576).toFixed(2)+' MB';
+}
+
+/* ── ADD FILES ── */
+function addFiles(files) {
+  Array.from(files).forEach(function(f) {
+    if (!f.type.startsWith('image/')) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      fileQueue.push({ file:f, thumbURL:e.target.result, status:'pending', resultURL:null, resultName:null });
+      renderQueue();
+      convertBtn.disabled = false;
+    };
+    reader.readAsDataURL(f);
+  });
+  resultsSection.classList.remove('show');
+  dlAllWrap.classList.remove('show');
+  resultsGrid.innerHTML = '';
+  hideStatus();
+  progressWrap.classList.remove('show');
+}
+
+/* ── RENDER QUEUE ── */
+function renderQueue() {
+  queueListEl.innerHTML = '';
+  fileQueue.forEach(function(item, i) {
+    var div = document.createElement('div');
+    div.className = 'queue-item' + (item.status==='done'?' done':item.status==='error'?' error':'');
+    div.setAttribute('role','listitem');
+    var labels = { pending:'Pending', processing:'Converting…', done:'✔ Done', error:'✗ Failed' };
+    div.innerHTML =
+      '<img class="q-thumb" src="'+item.thumbURL+'" alt="'+item.file.name+'" loading="lazy">' +
+      '<div class="q-info">' +
+        '<div class="q-name">'+item.file.name+'</div>' +
+        '<div class="q-meta">'+fmtSize(item.file.size)+'</div>' +
+      '</div>' +
+      '<div class="q-status '+item.status+'">'+(labels[item.status]||'Pending')+'</div>' +
+      (item.status !== 'processing' ? '<button class="q-remove" data-i="'+i+'" aria-label="Remove">✕</button>' : '');
+    queueListEl.appendChild(div);
+  });
+  queueCountEl.textContent = fileQueue.length;
+  queueSection.classList.toggle('show', fileQueue.length > 0);
+  convertBtn.disabled = fileQueue.length === 0;
+}
+
+queueListEl.addEventListener('click', function(e) {
+  if (e.target.classList.contains('q-remove')) {
+    fileQueue.splice(parseInt(e.target.dataset.i), 1);
+    renderQueue();
+  }
+});
+
+clearAllBtn.onclick = function() {
+  fileQueue = [];
+  renderQueue();
+  resultsSection.classList.remove('show');
+  dlAllWrap.classList.remove('show');
+  resultsGrid.innerHTML = '';
+  hideStatus();
+  progressWrap.classList.remove('show');
+  fileInput.value = '';
+};
+
+/* ── DRAG & DROP ── */
+fileInput.addEventListener('change', function(e) {
+  if (e.target.files.length) addFiles(e.target.files);
+});
+dropZone.addEventListener('dragover', function(e) {
+  e.preventDefault(); dropZone.classList.add('dragover');
+});
+dropZone.addEventListener('dragleave', function() {
+  dropZone.classList.remove('dragover');
+});
+dropZone.addEventListener('drop', function(e) {
+  e.preventDefault(); dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
+});
+
+/* ── STATUS & PROGRESS ── */
+function showStatus(type, msg) { statusEl.className = type; statusEl.textContent = msg; }
+function hideStatus()          { statusEl.className = '';   statusEl.textContent = ''; }
+function setProgress(pct, lbl) {
+  progressFill.style.width = pct + '%';
+  progressPct.textContent  = pct + '%';
+  if (lbl) progressText.textContent = lbl;
+}
+
+/* ── CONVERT ALL ── */
+convertBtn.addEventListener('click', async function() {
+  if (!fileQueue.length) return;
+  var fmt = selectedFormat;
+  convertBtn.disabled = true;
+  hideStatus();
+  resultsGrid.innerHTML = '';
+  resultsSection.classList.remove('show');
+  dlAllWrap.classList.remove('show');
+  progressWrap.classList.add('show');
+
+  if (fmt === 'gif') {
+    var BATCH = 10, batches = [], gifsDone = 0;
+    for (var i=0; i<fileQueue.length; i+=BATCH) batches.push(fileQueue.slice(i,i+BATCH));
+    for (var b=0; b<batches.length; b++) {
+      var batch = batches[b];
+      setProgress(Math.round((b/batches.length)*90), 'Building GIF '+(b+1)+' of '+batches.length+'… ('+batch.length+' frames)');
+      batch.forEach(function(item){ item.status='processing'; });
+      renderQueue();
+      try {
+        var result = await makeAnimatedGIF(batch, b+1);
+        batch.forEach(function(item){ item.status='done'; item.resultURL=result.url; item.resultName=result.name; });
+        addResultCard(result.url, result.name, batch[0].thumbURL, 'gif');
+        gifsDone++;
+      } catch(err) {
+        batch.forEach(function(item){ item.status='error'; });
+      }
+      renderQueue();
+    }
+    setProgress(100, 'All done!');
+    convertBtn.disabled = false;
+    if (gifsDone > 0) {
+      resultsSection.classList.add('show');
+      showStatus('success', '✔ '+gifsDone+' Animated GIF'+(gifsDone>1?'s':'')+' created!');
+      if (gifsDone > 1) dlAllWrap.classList.add('show');
+    } else {
+      showStatus('error', '⚠ GIF creation failed. Try fewer or smaller images.');
+    }
+    return;
+  }
+
+  var total = fileQueue.length, doneCount = 0;
+  for (var i=0; i<total; i++) {
+    fileQueue[i].status = 'processing';
+    renderQueue();
+    setProgress(Math.round((i/total)*90), 'Converting '+(i+1)+' of '+total+'…');
+    try {
+      var result = await convertOne(fileQueue[i], fmt);
+      fileQueue[i].status = 'done';
+      fileQueue[i].resultURL  = result.url;
+      fileQueue[i].resultName = result.name;
+      addResultCard(result.url, result.name, fileQueue[i].thumbURL, fmt);
+      doneCount++;
+    } catch(err) {
+      fileQueue[i].status = 'error';
+    }
+    renderQueue();
+  }
+  setProgress(100, 'All done!');
+  convertBtn.disabled = false;
+  if (doneCount > 0) {
+    resultsSection.classList.add('show');
+    showStatus('success', '✔ '+doneCount+' of '+total+' file'+(total>1?'s':'')+' converted!');
+    if (doneCount > 1) dlAllWrap.classList.add('show');
+  } else {
+    showStatus('error', '⚠ Conversion failed. Please try different files.');
+  }
+});
+
+/* ── RESULT CARD ── */
+function addResultCard(downloadURL, name, previewURL, fmt) {
+  var card = document.createElement('div');
+  card.className = 'result-card';
+  var isImg = ['png','jpeg','jpg','webp','bmp','tiff','avif','svg','ico'].includes(fmt);
+  var thumb = fmt === 'gif' ? previewURL : (isImg ? downloadURL : null);
+  var gifTag = fmt === 'gif' ? '<div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.72);color:#2ecc71;font-size:9px;font-weight:800;padding:3px 7px;border-radius:4px;letter-spacing:1px;">▶ ANIMATED</div>' : '';
+  card.innerHTML =
+    '<div class="result-thumb-wrap">' +
+      (thumb ? '<img class="result-thumb" src="'+thumb+'" alt="'+name+'" loading="lazy">' : '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:38px;">📄</div>') +
+      '<div class="result-fmt-badge">'+fmt.toUpperCase()+'</div>' +
+      gifTag +
+    '</div>' +
+    '<div class="result-info">' +
+      '<div class="result-name" title="'+name+'">'+name+'</div>' +
+      '<button class="result-dl">⬇ Download</button>' +
+    '</div>';
+  card.querySelector('.result-dl').addEventListener('click', function() { triggerDownload(downloadURL, name); });
+  resultsGrid.appendChild(card);
+}
+
+/* ── DOWNLOAD ALL ── */
+dlAllBtn.addEventListener('click', function() {
+  var items = fileQueue.filter(function(i){ return i.resultURL && i.resultName; });
+  if (!items.length) return;
+  dlAllBtn.textContent = '⏳ Downloading…';
+  dlAllBtn.disabled = true;
+  var idx = 0;
+  (function next() {
+    if (idx >= items.length) {
+      dlAllBtn.textContent = '✔ Downloaded '+items.length+' File'+(items.length>1?'s':'')+'!';
+      setTimeout(function(){ dlAllBtn.textContent='⬇ Download All Files'; dlAllBtn.disabled=false; }, 2500);
+      return;
+    }
+    triggerDownload(items[idx].resultURL, items[idx].resultName);
+    idx++;
+    setTimeout(next, 700);
+  })();
+});
+
+function triggerDownload(url, name) {
+  var a = document.createElement('a');
+  a.href = url; a.download = name; a.style.display = 'none';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+/* ── CONVERT ONE ── */
+function convertOne(item, fmt) {
+  return new Promise(function(resolve, reject) {
+    var img = new Image();
+    img.onload = function() {
+      try {
+        var base = item.file.name.replace(/\.[^/.]+$/, '');
+        var ext  = fmt === 'jpeg' ? 'jpg' : fmt;
+        var name = base + '_nex.' + ext;
+        if      (fmt === 'svg') resolveSVG(img, name, resolve);
+        else if (fmt === 'pdf') resolvePDF(img, name, resolve);
+        else if (fmt === 'ico') resolveICO(img, name, resolve);
+        else                    resolveCanvas(img, fmt, name, resolve);
+      } catch(err) { reject(err); }
+    };
+    img.onerror = function() { reject(new Error('Decode failed')); };
+    img.src = item.thumbURL;
+  });
+}
+
+function resolveCanvas(img, fmt, name, resolve) {
+  var c = document.createElement('canvas');
+  c.width = img.naturalWidth; c.height = img.naturalHeight;
+  var ctx = c.getContext('2d');
+  if (['jpeg','bmp','tiff','avif'].includes(fmt)) { ctx.fillStyle='#fff'; ctx.fillRect(0,0,c.width,c.height); }
+  ctx.drawImage(img, 0, 0);
+  var mime = { png:'image/png', jpeg:'image/jpeg', webp:'image/webp', bmp:'image/bmp', tiff:'image/tiff', avif:'image/avif' }[fmt] || 'image/png';
+  var q = fmt==='jpeg' ? 0.92 : fmt==='webp' ? 0.90 : undefined;
+  resolve({ url: c.toDataURL(mime, q), name: name });
+}
+
+function resolveSVG(img, name, resolve) {
+  var c = document.createElement('canvas');
+  c.width = img.naturalWidth; c.height = img.naturalHeight;
+  c.getContext('2d').drawImage(img, 0, 0);
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="'+c.width+'" height="'+c.height+'"><image href="'+c.toDataURL('image/png')+'" width="'+c.width+'" height="'+c.height+'"/></svg>';
+  resolve({ url: URL.createObjectURL(new Blob([svg], { type:'image/svg+xml' })), name: name });
+}
+
+function resolvePDF(img, name, resolve) {
+  var c = document.createElement('canvas');
+  c.width = img.naturalWidth; c.height = img.naturalHeight;
+  c.getContext('2d').drawImage(img, 0, 0);
+  var b64 = c.toDataURL('image/jpeg', 0.92).split(',')[1];
+  var W=c.width, H=c.height, ptW=Math.round(W*0.75), ptH=Math.round(H*0.75);
+  var len = atob(b64).length;
+  var stream = 'q '+ptW+' 0 0 '+ptH+' 0 0 cm /I1 Do Q\n';
+  var pdf = '%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj\n3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 '+ptW+' '+ptH+']/Contents 4 0 R/Resources<</XObject<</I1 5 0 R>>>>>>endobj\n4 0 obj<</Length '+stream.length+'>>\nstream\n'+stream+'endstream\nendobj\n5 0 obj<</Type/XObject/Subtype/Image/Width '+W+'/Height '+H+'/ColorSpace/DeviceRGB/BitsPerComponent 8/Filter/DCTDecode/Length '+len+'>>\nstream\n'+b64+'\nendstream\nendobj\nxref\n0 6\ntrailer<</Size 6/Root 1 0 R>>\nstartxref 0\n%%EOF';
+  resolve({ url: URL.createObjectURL(new Blob([pdf], { type:'application/pdf' })), name: name });
+}
+
+function resolveICO(img, name, resolve) {
+  var c = document.createElement('canvas');
+  c.width = 32; c.height = 32;
+  c.getContext('2d').drawImage(img, 0, 0, 32, 32);
+  resolve({ url: c.toDataURL('image/png'), name: name });
+}
+
+/* ── ANIMATED GIF ENCODER ── */
+function makeAnimatedGIF(batch, batchNum) {
+  return new Promise(function(resolve, reject) {
+    var imgs = new Array(batch.length), loaded = 0;
+    batch.forEach(function(item, i) {
+      var img = new Image();
+      img.onload  = function() { imgs[i]=img; if(++loaded===batch.length) buildGIF(); };
+      img.onerror = function() { reject(new Error('Frame load failed')); };
+      img.src = item.thumbURL;
+    });
+    function buildGIF() {
+      var W = Math.min(Math.max.apply(null, imgs.map(function(i){ return i.naturalWidth; })), 600);
+      var H = Math.min(Math.max.apply(null, imgs.map(function(i){ return i.naturalHeight; })), 600);
+      var frames = imgs.map(function(img) {
+        var c = document.createElement('canvas');
+        c.width=W; c.height=H;
+        var ctx=c.getContext('2d');
+        ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,W,H);
+        var sc=Math.min(W/img.naturalWidth, H/img.naturalHeight);
+        ctx.drawImage(img,(W-img.naturalWidth*sc)/2,(H-img.naturalHeight*sc)/2,img.naturalWidth*sc,img.naturalHeight*sc);
+        return ctx.getImageData(0,0,W,H);
+      });
+      var bytes = encodeGIF(W, H, frames, 50);
+      resolve({ url: URL.createObjectURL(new Blob([bytes],{type:'image/gif'})), name:'animated_nex_'+batchNum+'.gif' });
+    }
+  });
+}
+
+function encodeGIF(w,h,frames,delay) {
+  var out=[], push=function(b){out.push(b);}, pushB=function(a){a.forEach(function(b){out.push(b);});}, pushS=function(s){for(var i=0;i<s.length;i++)out.push(s.charCodeAt(i));};
+  pushS('GIF89a');
+  push(w&0xFF);push((w>>8)&0xFF);push(h&0xFF);push((h>>8)&0xFF);push(0xF7);push(0);push(0);
+  var pal=buildPalette(); pushB(pal);
+  pushB([0x21,0xFF,0x0B]); pushS('NETSCAPE2.0'); pushB([0x03,0x01,0x00,0x00,0x00]);
+  frames.forEach(function(d) {
+    pushB([0x21,0xF9,0x04,0x00]); push(delay&0xFF);push((delay>>8)&0xFF);push(0);push(0);
+    push(0x2C);push(0);push(0);push(0);push(0);
+    push(w&0xFF);push((w>>8)&0xFF);push(h&0xFF);push((h>>8)&0xFF);push(0);
+    var idx=quantizePixels(d), lzw=lzwEncode(idx,8);
+    push(8);
+    for(var i=0;i<lzw.length;){var c=Math.min(255,lzw.length-i);push(c);for(var j=0;j<c;j++)push(lzw[i++]);}
+    push(0);
+  });
+  push(0x3B);
+  return new Uint8Array(out);
+}
+
+function buildPalette() {
+  var p=[];
+  for(var r=0;r<6;r++)for(var g=0;g<6;g++)for(var b=0;b<6;b++)p.push(r*51,g*51,b*51);
+  for(var i=0;i<40;i++){var v=Math.round(i*255/39);p.push(v,v,v);}
+  return p;
+}
+
+function quantizePixels(d) {
+  var px=d.data, len=d.width*d.height, idx=new Uint8Array(len);
+  for(var i=0;i<len;i++) idx[i]=Math.round(px[i*4]/51)*36+Math.round(px[i*4+1]/51)*6+Math.round(px[i*4+2]/51);
+  return idx;
+}
+
+function lzwEncode(idx,min) {
+  var cc=1<<min, eof=cc+1, cs=min+1, nc=eof+1;
+  var tbl=new Map(), out=[], buf=0, bb=0;
+  var wrt=function(c){buf|=c<<bb;bb+=cs;while(bb>=8){out.push(buf&0xFF);buf>>=8;bb-=8;}};
+  var ini=function(){tbl.clear();for(var i=0;i<cc;i++)tbl.set(String(i),i);cs=min+1;nc=eof+1;};
+  ini(); wrt(cc);
+  var pre=String(idx[0]);
+  for(var i=1;i<idx.length;i++){
+    var k=pre+','+idx[i];
+    if(tbl.has(k)){pre=k;}
+    else{
+      wrt(tbl.get(pre));
+      if(nc<4096){tbl.set(k,nc++);if(nc>(1<<cs)&&cs<12)cs++;}
+      else{wrt(cc);ini();}
+      pre=String(idx[i]);
+    }
+  }
+  wrt(tbl.get(pre)); wrt(eof);
+  if(bb>0)out.push(buf&0xFF);
+  return out;
+}
+
+/* ── SUGGEST FORM ── */
+var suggestForm = document.getElementById('suggestForm');
+var suggestBtn  = document.getElementById('suggestBtn');
+var formMsg     = document.getElementById('formMsg');
+
+suggestForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  suggestBtn.disabled    = true;
+  suggestBtn.textContent = 'Sending…';
+  formMsg.className      = 'form-msg';
+  try {
+    var res = await fetch(suggestForm.action, {
+      method: 'POST',
+      body: new FormData(suggestForm),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      formMsg.className   = 'form-msg success';
+      formMsg.textContent = '✔ Thanks! Your idea has been received. We\'ll review it soon.';
+      suggestForm.reset();
+    } else {
+      var data = await res.json();
+      throw new Error((data && data.errors ? data.errors.map(function(e){return e.message;}).join(', ') :'') || 'Submission failed');
+    }
+  } catch(err) {
+    formMsg.className   = 'form-msg error';
+    formMsg.textContent = '⚠ Could not send. Please email: support.nexhub@gmail.com';
+  } finally {
+    suggestBtn.disabled    = false;
+    suggestBtn.textContent = 'Submit Idea';
+  }
+});
+
+</script>
+</body>
+</html>
